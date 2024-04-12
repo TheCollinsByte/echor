@@ -9,3 +9,11 @@ fn dies_no_args() {
         .failure()
         .stderr(predicate::str::contains("USAGE"));
 }
+
+#[test]
+fn run() {
+    let mut cmd = Command::cargo_bin("echor").unwrap();
+    cmd.arg("hello")
+        .assert()
+        .success();
+}
